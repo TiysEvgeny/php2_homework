@@ -79,4 +79,28 @@ class fruit extends Good {
 	}
 }
 $apple= new fruit('Яблоко', 200, 10);
+
+echo"\n",'Пункт 2: см. код',"\n";
+
+trait GetObj{
+	static function GetObject(){
+		if(self::$object === null){
+			self::$object = new self;
+			echo "Объект создан!\n";
+		}
+		return self::$object;
+	}
+	private function __clone(){
+	}
+	private function __wakeup(){
+	}
+}
+
+class singleton {
+	private static $object;
+	private function __construct (){
+	}
+	use getObj;
+}
+$connect = singleton::GetObject();
 ?>
